@@ -1,0 +1,25 @@
+<div class="container">
+ <div class="row valign-wrapper">
+      <div class="col s12">
+          <div class="card yellow lighten-5 card-panel hoverable">
+            <div class="card-content grey-text">
+                <span class="card-title">
+                  <%= simple_format(article.title) %></span>
+                <%= simple_format(article.text) %>
+            </div>
+
+    <% if user_signed_in? && current_user.id == article.user_id %>
+        <div class="card-action valign-wrapper">
+                <%= link_to 'DETAIL', "/articles/#{article.id}", {:class => "waves-effect waves-light btn orange lighten-4"} %>
+            </br></br>
+              <% if user_signed_in? && current_user.id == article.user_id %>
+                <%= link_to 'EDIT', "/articles/#{article.id}/edit", {:class => "waves-effect waves-light btn orange lighten-4"} %>
+            </br>
+                <%= link_to 'DELETE', "/articles/#{article.id}", {:class => "waves-effect waves-light btn orange lighten-4",  method: :delete}%>
+              <% end %>
+          </div>
+    <% end %>
+</div>
+</div>
+</div>
+</div>

@@ -1,0 +1,11 @@
+<div class="contents row" >
+    </br>
+    <h5 class="center-align">
+      <span class="amber-text text-accent-1"><%= @nickname %>'s POSTED LIST</span>
+    </h5>
+    </br>
+    <% @articles.each do |article| %>
+    <%= render partial: "articles/article", locals: { article: article } %>
+  <% end %>
+  <%= paginate(@articles) %>
+  </div>

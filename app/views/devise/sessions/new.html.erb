@@ -1,0 +1,28 @@
+ <div class="container">
+     <h4 class="center-align amber-text text-accent-1">LOG IN</h4>
+
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="field">
+        <i class="material-icons">mail_outline</i>
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true %>
+      </div>
+
+      <div class="field">
+        <i class="material-icons">lock</i>
+        <%= f.label :password %><br />
+        <%= f.password_field :password, autocomplete: "off" %>
+      </div>
+
+      <% if devise_mapping.rememberable? -%>
+        <div class="field">
+          <%= f.label :remember_me %><br />
+          <%= f.check_box :remember_me %>
+        </div>
+      <% end -%>
+
+      <div class="row valign-wrapper">
+        <%= f.submit "LOG IN", class: "btn orange lighten-4 valign center-block btn-primary withripple" %>
+      </div>
+    <% end %>
+  </div>

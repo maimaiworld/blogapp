@@ -1,0 +1,39 @@
+<div class="container">
+     <h4 class="center-align amber-text text-accent-1">SIGN UP</h4>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
+
+      <div class="field">
+        <i class="material-icons">account_circle</i>
+        <%= f.label :nickname %> <em>(6 characters maximum)</em><br />
+        <%= f.text_field :nickname, autofocus: true, maxlength: "6" %>
+      </div>
+
+      <div class="field">
+        <i class="material-icons">mail_outline</i>
+        <%= f.label :email %><br />
+        <%= f.email_field :email %>
+      </div>
+
+
+      <div class="field">
+        <i class="material-icons">lock</i>
+        <%= f.label :password %>
+        <% if @validatable %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "off" %>
+      </div>
+
+      <div class="field">
+        <i class="material-icons">lock_outline</i>
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off" %>
+      </div>
+
+      <div class="row valign-wrapper">
+        <%= f.submit "SIGN UP", class: "btn orange lighten-4 valign center-block btn-primary withripple" %>
+      </div>
+    <% end %>
+  </div>

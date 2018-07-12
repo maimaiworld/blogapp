@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Blog</title>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+
+  <style type="text/css" href="./style.css"></style>
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</head>
+
+  <body>
+  <header>
+  <nav class="pink lighten-4">
+    <div class="nav-wrapper">
+      <%= link_to "Simple Blog",root_path, { :class => "brand-logo" } %>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <% if user_signed_in?  %>
+          <li>
+          <%= link_to "NEW POST",new_article_path, {:method => "get"} %>
+          <li>
+          <a href="/users/<%= current_user.id %>">MY PAGE</a>
+          </li>
+          <li>
+          <%= link_to "LOG OUT",destroy_user_session_path, {:method => "delete"} %>
+          </li>
+
+        <% else %>
+        <li>
+          <%= link_to "LOG IN",new_user_session_path, { :class => "post" } %>
+        </li>
+        <li>
+          <%= link_to "SIGN UP", new_user_registration_path, { :class => "post"} %>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+    <%= yield %>
+
+    <footer class="page-footer pink lighten-4"">
+      <div class="container center-align">
+        Copyright Simple Blog 2018.
+      </div>
+    </footer>
+    <script type="text/javascript" src="./app.js"></script>
+  </body>
+</html>

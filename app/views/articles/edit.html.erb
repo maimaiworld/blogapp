@@ -1,0 +1,13 @@
+<div class="container">
+    <%= form_for @article do |f| %>
+      <h4 class="center-align amber-text text-accent-1">
+        EDIT POST
+      </h4>
+      <%= f.text_field :date, placeholder: "Date" %>
+      <%= f.text_field :title, placeholder: "Title" %>
+      <%= f.text_area :text, placeholder: "Text" %>
+      <div class="row valign-wrapper">
+      <%= f.submit "送信", class: "btn orange lighten-4 valign center-block btn-primary withripple" %>
+      </div>
+    <% end %>
+  </div>

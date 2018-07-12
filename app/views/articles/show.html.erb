@@ -1,0 +1,37 @@
+<div class="container">
+ <div class="row valign-wrapper">
+      <div class="col s12">
+          <div class="card yellow lighten-5 card-panel hoverable">
+            <div class="card-content grey-text">
+                <span class="card-title">
+                <%= simple_format(@article.title) %>
+                <%= simple_format(@article.text) %>
+            </div>
+</div>
+</div>
+</div>
+</div>
+
+  <div class="container">
+    <% if current_user %>
+      <%= form_tag("/articles/#{@article.id}/comments", method: :post) do %>
+        <textarea cols="30" name="text" placeholder="Make comments" rows="2"></textarea>
+        <div class="row valign-wrapper">
+        <input type="submit" value="SENT" class="btn orange lighten-4 valign center-block btn-primary withripple">
+      </div>
+      <% end %>
+    <% end %>
+  </br>
+   <% if @comments %>
+      <div class="comments">
+      <h4 class="center-align amber-text text-accent-1">COMMENTS</h4>
+        <% @comments.each do |comment| %>
+          <p>
+            <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}", {:class => "amber-text text-accent-1"} %>：</strong>
+            <%= comment.text %>
+          </p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
