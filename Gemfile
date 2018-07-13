@@ -55,3 +55,6 @@ gem 'devise'
 gem 'materialize-sass'
 gem 'jquery-ui-rails'
 gem 'carrierwave'
+gem 'sqlite3', group: :development
+gem 'rails_12factor', group: :production
+gem 'pg', group: :production
